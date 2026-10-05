@@ -1,0 +1,22 @@
+/* Styles qui ne peuvent pas s'exprimer en style inline React (hover, media queries) —
+   un seul fichier, importé une fois, plutôt que des <style> éparpillés dans chaque composant. */
+
+.nav-link:hover { background: var(--nuit-2); color: #fff; }
+
+.btn-primary:hover { background: var(--vert-pump-hover) !important; }
+.btn-ghost:hover { border-color: var(--vert-pump) !important; }
+.btn-outline-dark:hover { background: var(--brume) !important; }
+
+.tab-btn:hover { border-color: var(--nuit) !important; }
+.side-tab:hover { background: var(--brume) !important; }
+
+.faq-item button:hover { background: var(--brume); }
+
+@media (max-width: 1100px) {
+  .nav-links { display: none !important; }
+  .nav-burger { display: flex !important; }
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 1101px) {
+  .hide-desktop { display: none !important; }
+}

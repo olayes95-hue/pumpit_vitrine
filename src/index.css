@@ -1,0 +1,65 @@
+:root {
+  /* ---- marque (charte graphique PumpIT v1.0) ---- */
+  --vert-pump: #00C26A;
+  --vert-pump-hover: #00AD5F;
+  --vert-pump-press: #009953;
+  --vert-texte: #00874A;
+  --vert-fonce: #006638;
+  --vert-fond: #D6F5E4;
+  --nuit: #0B1F17;
+  --nuit-2: #1C3329;
+  --nuit-3: #13291F;
+  --citron: #C8F547;
+  --citron-fond: #EEFAC6;
+  --citron-texte: #4F6400;
+  --brume: #F3F6F4;
+  --ardoise: #4A5E55;
+  --foret: #2E4239;
+  --sauge: #A9BDB3;
+  --sauge-claire: #DDE8E2;
+  --filet: #DCE5E0;
+  --filet-fonce: #C5D2CB;
+  --gris-fond: #E3EBE6;
+  --rouge: #E5483B;
+  --rouge-texte: #B3261E;
+  --rouge-fond: #FCE3E0;
+
+  /* ---- activités ---- */
+  --act-carburants: #00C26A; --act-carburants-fond: #D6F5E4; --act-carburants-texte: #006638;
+  --act-lubrifiants: #F2A516; --act-lubrifiants-fond: #FDEFCF; --act-lubrifiants-texte: #7A4F00;
+  --act-gaz: #2F7FD8; --act-gaz-fond: #DCEAFB; --act-gaz-texte: #1D4F8C;
+  --act-superette: #8B5CF6; --act-superette-fond: #EAE2FE; --act-superette-texte: #5B36B8;
+  --act-lavage: #14B8C4; --act-lavage-fond: #D3F3F6; --act-lavage-texte: #0E6E78;
+
+  --font-display: "Outfit", "Arial Black", system-ui, sans-serif;
+  --font-ui: "Rubik", Arial, system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0;
+  background: var(--brume);
+  color: var(--nuit);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--vert-texte); text-decoration: none; }
+a:hover { color: var(--vert-fonce); }
+button { font-family: inherit; }
+img { max-width: 100%; display: block; }
+*:focus-visible { outline: 2px solid var(--vert-pump); outline-offset: 2px; }
+
+.wordmark { height: 26px; width: auto; display: block; }
+
+@keyframes pumpFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
