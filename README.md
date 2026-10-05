@@ -35,19 +35,20 @@ variables dans `.env.local`, ou tester directement sur un déploiement Preview u
 Ce ne sont pas des bugs : tout fonctionne et s'affiche correctement, mais ces points doivent
 être réglés avant d'ouvrir le site au public.
 
-1. **Photos manquantes** — 5 emplacements affichent un encadré avec la légende de la photo
-   attendue plutôt qu'une vraie image (composant `ImageSlot`) : photo hero, photo "saisie sur le
-   terrain", photo formation d'équipe, et 2 photos de témoignage. Remplacer `<ImageSlot .../>`
-   par `<img src="..." />` au fur et à mesure que les photos arrivent.
+1. **Photos** — hero, "Saisie du jour" et "Démarrer" utilisent déjà de vraies photos
+   (`public/photos/pompiste.jpg`, `public/photos/pompe.jpg` — cette dernière réutilisée deux fois,
+   faute d'une photo dédiée pour chaque emplacement). Il reste les 2 portraits de témoignage
+   (`Avis.jsx`) en placeholder (composant `ImageSlot`). Remplacer `<ImageSlot .../>` par
+   `<img src="..." />` dès que ces photos existent.
 
 2. **Contenu à vérifier avant publication** (marqué `TODO` dans le code) :
    - `src/pages/MentionsLegales.jsx` et `src/pages/Confidentialite.jsx` — structure juridique
      standard, mais tous les champs `[à compléter]` (raison sociale, RCCM/SIRET, adresse, email)
      doivent être remplis avec les vraies informations.
    - `src/components/Footer.jsx` — numéro de téléphone encore en placeholder.
-   - `src/components/sections/Avis.jsx` — les deux citations clients et les chiffres "20 stations"
-     / "400+ jours de points suivis" : à confirmer que ce sont de vrais chiffres avant publication,
-     ou à ajuster.
+   - `src/components/sections/Avis.jsx` — chiffres ("20 stations", "400+ jours de points suivis")
+     confirmés réels, rien à changer. Les 2 citations clients restent à recueillir : remplacer le
+     texte "Citation ... à recueillir" et "Prénom Nom" par la vraie citation une fois obtenue.
 
 ## Déploiement
 

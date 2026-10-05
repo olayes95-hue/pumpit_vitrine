@@ -9,7 +9,6 @@ export default function Avis() {
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(36px, 4.4vw, 56px)', letterSpacing: '-0.03em', lineHeight: 1.02, margin: 0 }}>Déjà en service, chaque jour.</h2>
         </div>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-          {/* TODO : chiffres à confirmer avant publication (nombre réel de stations / jours de points suivis) */}
           <div style={{ flex: 1, minWidth: 160, background: 'var(--nuit)', color: '#fff', borderRadius: 24, padding: 22, display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 52, lineHeight: 1.1, color: 'var(--vert-pump)', alignSelf: 'flex-start' }}>20</span>
             <span style={{ fontSize: 15, color: 'var(--sauge-claire)' }}>stations déjà en service</span>

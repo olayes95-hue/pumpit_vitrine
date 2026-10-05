@@ -1,5 +1,3 @@
-import ImageSlot from '../ImageSlot.jsx'
-
 export default function SaisieDuJour() {
   return (
     <section style={{ background: 'var(--vert-pump)', overflow: 'hidden' }}>
@@ -23,7 +21,7 @@ export default function SaisieDuJour() {
         </div>
         <div className="phone-wrap" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
           <div className="hide-mobile phone-photo" style={{ position: 'absolute', right: 0, top: 40, width: '62%', height: 440 }}>
-            <ImageSlot placeholder="Photo : téléphone en main, sur le terrain" radius={32} />
+            <img src="/photos/pompe.jpg" alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 32 }} />
           </div>
           <div className="phone-frame" style={{ position: 'relative', width: 280, background: 'var(--nuit)', borderRadius: 44, padding: 12, boxShadow: '0 40px 70px -30px rgba(11,31,23,0.7)', alignSelf: 'flex-start' }}>
             <div style={{ background: 'var(--brume)', borderRadius: 34, padding: '22px 16px', display: 'flex', flexDirection: 'column', gap: 10, minHeight: 500 }}>
