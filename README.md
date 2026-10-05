@@ -11,22 +11,36 @@ npm install
 npm run dev
 ```
 
+## Formulaire de démo → Brevo
+
+`api/demo.js` (fonction serverless Vercel) envoie un email via Brevo à chaque soumission —
+même service que `pumpit-app` (voir `supabase/functions/send-notification` dans ce repo-là),
+appelé ici directement en REST puisque ce projet n'a pas de backend Supabase propre.
+
+**À faire une seule fois**, dans le projet Vercel de ce site (Settings → Environment Variables) :
+
+| Variable | Valeur |
+|---|---|
+| `BREVO_API_KEY` | Une clé API Brevo (app.brevo.com → Settings → SMTP & API → API Keys). Peut être la même clé que celle de `pumpit-app`, ou une clé dédiée — au choix. |
+| `BREVO_SENDER_EMAIL` | Adresse expéditeur **vérifiée** dans Brevo (ex. `notifications@pumpit.app`, déjà vérifiée côté `pumpit-app`). |
+| `BREVO_SENDER_NOM` | Nom affiché comme expéditeur, ex. `PumpIT — Site vitrine`. |
+| `DEMO_RECIPIENT_EMAIL` | L'adresse qui doit recevoir chaque demande de démo. |
+
+Ne fonctionne pas avec `npm run dev` seul (les routes `/api` sont servies par Vercel, pas par
+Vite) — pour tester en local, utiliser `vercel dev` (CLI Vercel) après avoir renseigné ces
+variables dans `.env.local`, ou tester directement sur un déploiement Preview une fois poussé.
+
 ## Avant de publier — ce qui reste à faire
 
-Ce ne sont pas des bugs : tout fonctionne et s'affiche correctement, mais trois choses listées
-ci-dessous doivent être réglées avant d'ouvrir le site au public.
+Ce ne sont pas des bugs : tout fonctionne et s'affiche correctement, mais ces points doivent
+être réglés avant d'ouvrir le site au public.
 
-1. **Formulaire de démo non branché** (`src/components/sections/DemoForm.jsx`) — le formulaire
-   fonctionne visuellement (état "envoyé") mais n'envoie nulle part pour l'instant. Il faut le
-   relier à un vrai service (email via Brevo — déjà utilisé côté `pumpit-app` — ou un CRM) sinon
-   les demandes de démo se perdent silencieusement.
-
-2. **Photos manquantes** — 5 emplacements affichent un encadré avec la légende de la photo
+1. **Photos manquantes** — 5 emplacements affichent un encadré avec la légende de la photo
    attendue plutôt qu'une vraie image (composant `ImageSlot`) : photo hero, photo "saisie sur le
    terrain", photo formation d'équipe, et 2 photos de témoignage. Remplacer `<ImageSlot .../>`
    par `<img src="..." />` au fur et à mesure que les photos arrivent.
 
-3. **Contenu à vérifier avant publication** (marqué `TODO` dans le code) :
+2. **Contenu à vérifier avant publication** (marqué `TODO` dans le code) :
    - `src/pages/MentionsLegales.jsx` et `src/pages/Confidentialite.jsx` — structure juridique
      standard, mais tous les champs `[à compléter]` (raison sociale, RCCM/SIRET, adresse, email)
      doivent être remplis avec les vraies informations.

@@ -17,11 +17,11 @@ export default function DemoForm() {
     const data = Object.fromEntries(new FormData(e.target))
     setBusy(true)
     try {
-      // TODO : pas encore relié à un vrai service d'envoi (email/CRM) — voir README du projet
-      // pour brancher ça avant l'ouverture publique du site, sinon les demandes de démo ne vont
-      // nulle part. Le formulaire fonctionne déjà visuellement (état "envoyé" ci-dessous).
-      await new Promise(r => setTimeout(r, 400))
-      console.info('Demande de démo (à envoyer réellement) :', data)
+      const resp = await fetch('/api/demo', {
+        method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data),
+      })
+      const body = await resp.json().catch(() => ({}))
+      if (!resp.ok) throw new Error(body.error || "L'envoi a échoué.")
       setSent(true)
     } catch {
       setErr("L'envoi a échoué. Réessaie, ou contacte-nous directement.")
