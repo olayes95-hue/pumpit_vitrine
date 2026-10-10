@@ -1,3 +1,7 @@
+import { useOffres } from '../../lib/offres.jsx'
+
+// Repli si la base n'est pas joignable ou ne renvoie rien (voir lib/offres.jsx) — le site
+// ne doit jamais dépendre de cette donnée pour fonctionner.
 const PLANS = [
   { name: 'Essentiel', price: '25 000', desc: 'Le carburant, sans WhatsApp ni cahier.', bg: 'var(--brume)', fg: 'var(--nuit)', badge: false,
     items: ['1 station', 'Activité : carburant', 'Saisie quotidienne (chef de piste, pompiste)', 'Alertes écart de caisse et versement manquant', 'Rapports et historique', 'Formation à la prise en main'] },
@@ -8,6 +12,15 @@ const PLANS = [
 ]
 
 export default function Tarifs() {
+  const offres = useOffres()
+  const plans = offres?.length
+    ? offres.map(o => ({
+        name: o.label, price: Number(o.prix_mensuel).toLocaleString('fr-FR'), desc: o.description || '',
+        bg: o.mise_en_avant_vitrine ? 'var(--nuit)' : 'var(--brume)', fg: o.mise_en_avant_vitrine ? '#fff' : 'var(--nuit)',
+        badge: o.mise_en_avant_vitrine, lift: o.mise_en_avant_vitrine,
+        items: o.points_forts_vitrine?.length ? o.points_forts_vitrine : PLANS.find(p => p.name === o.label)?.items || [],
+      }))
+    : PLANS
   return (
     <section id="tarifs" style={{ background: '#fff' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '110px 28px', display: 'flex', flexDirection: 'column', gap: 36 }}>
@@ -17,7 +30,7 @@ export default function Tarifs() {
           <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--foret)', margin: 0 }}>Abonnement mensuel, sans engagement, payable par Mobile Money. Tarifs par station. Plusieurs stations : tarif réseau sur demande.</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, alignItems: 'stretch' }}>
-          {PLANS.map(p => (
+          {plans.map(p => (
             <div key={p.name} style={{ background: p.bg, color: p.fg, borderRadius: 32, padding: 32, display: 'flex', flexDirection: 'column', gap: 18, transform: p.lift ? 'translateY(-12px)' : 'none' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 30 }}>{p.name}</span>
