@@ -1,6 +1,10 @@
 import LegalLayout from '../components/LegalLayout.jsx'
+import { useContenu } from '../lib/contenu.jsx'
+
+const Todo = () => <span className="todo">à compléter</span>
 
 export default function Confidentialite() {
+  const c = useContenu()
   return (
     <LegalLayout title="Politique de confidentialité" updated="[à compléter à la publication]">
       <p style={{ margin: 0 }}>
@@ -10,7 +14,7 @@ export default function Confidentialite() {
       <section>
         <h2>Responsable du traitement</h2>
         <p style={{ margin: 0 }}>
-          <span className="todo">[Raison sociale]</span>, <span className="todo">[adresse]</span> — contact : <span className="todo">[email à compléter]</span>.
+          {c?.raison_sociale || <Todo />}, {c?.siege_social || <Todo />} — contact : {c?.email_contact || <Todo />}.
         </p>
       </section>
 
@@ -34,7 +38,7 @@ export default function Confidentialite() {
       <section>
         <h2>Durée de conservation</h2>
         <p style={{ margin: 0 }}>
-          Les données d'un compte PumpIT Pro sont conservées pendant la durée de la relation contractuelle avec le client, puis archivées ou supprimées selon les obligations légales applicables. Les demandes de démo non suivies d'effet sont conservées <span className="todo">[durée à préciser, ex. 12 mois]</span>.
+          Les données d'un compte PumpIT Pro sont conservées pendant la durée de la relation contractuelle avec le client, puis archivées ou supprimées selon les obligations légales applicables. Les demandes de démo non suivies d'effet sont conservées {c?.duree_conservation_demo || <Todo />}.
         </p>
       </section>
 
@@ -48,7 +52,7 @@ export default function Confidentialite() {
       <section>
         <h2>Vos droits</h2>
         <p style={{ margin: 0 }}>
-          Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles. Pour l'exercer, contactez-nous à <span className="todo">[email à compléter]</span>.
+          Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles. Pour l'exercer, contactez-nous à {c?.email_contact || <Todo />}.
         </p>
       </section>
 

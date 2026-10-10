@@ -1,4 +1,8 @@
+import { useContenu, photoUrl } from '../../lib/contenu.jsx'
+
 export default function Hero() {
+  const c = useContenu()
+  const heroSrc = photoUrl(c?.photo_hero, '/photos/pompiste.jpg')
   return (
     <header id="top" style={{ background: 'var(--nuit)', color: '#fff', overflow: 'hidden', paddingTop: 64 }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '72px 28px 110px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))', gap: 64, alignItems: 'center' }}>
@@ -24,7 +28,7 @@ export default function Hero() {
         </div>
         <div className="hide-mobile" style={{ position: 'relative', minHeight: 520 }}>
           <div style={{ position: 'absolute', top: 0, right: 0, width: '86%', height: 430 }}>
-            <img src="/photos/pompiste.jpg" alt="Pompiste PumpIT en station, souriant, prêt à servir un client" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 36 }} />
+            <img src={heroSrc} alt="Pompiste PumpIT en station, souriant, prêt à servir un client" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 36 }} />
           </div>
           <div style={{ position: 'absolute', left: 0, top: 70, width: 250, background: '#fff', color: 'var(--nuit)', borderRadius: 22, padding: 18, display: 'flex', flexDirection: 'column', gap: 10, boxShadow: '0 30px 60px -24px rgba(0,0,0,0.6)', animation: 'pumpFloat 6s ease-in-out infinite' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><span style={{ fontSize: 14, fontWeight: 600 }}>Cuve Super</span><span style={{ fontSize: 13, fontWeight: 700, color: 'var(--vert-fonce)' }}>78 %</span></div>
@@ -41,7 +45,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="hide-desktop" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ height: 240, borderRadius: 28, overflow: 'hidden' }}><img src="/photos/pompiste.jpg" alt="Pompiste PumpIT en station, souriant, prêt à servir un client" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
+          <div style={{ height: 240, borderRadius: 28, overflow: 'hidden' }}><img src={heroSrc} alt="Pompiste PumpIT en station, souriant, prêt à servir un client" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
           <div style={{ background: '#fff', color: 'var(--nuit)', borderRadius: 20, padding: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 14, fontWeight: 600 }}>Cuve Super</span><span style={{ fontSize: 13, fontWeight: 700, color: 'var(--vert-fonce)' }}>78 %</span></div>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 26 }}>12 400 L</span>

@@ -1,4 +1,7 @@
+import { useContenu } from '../lib/contenu.jsx'
+
 export default function Footer() {
+  const c = useContenu()
   return (
     <footer style={{ background: 'var(--nuit)', borderTop: '1px solid var(--nuit-2)' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '40px 28px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 28, color: 'var(--sauge)', fontSize: 14 }}>
@@ -14,9 +17,8 @@ export default function Footer() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <span style={{ color: '#fff', fontWeight: 600 }}>Contact</span>
-          {/* TODO : remplacer par les vraies coordonnées avant publication */}
-          <span>contact@pumpit-solutions.com</span>
-          <span>[À compléter — téléphone]</span>
+          <span>{c?.email_contact || 'contact@pumpit-solutions.com'}</span>
+          <span>{c?.telephone_contact || '[À compléter — téléphone]'}</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <span style={{ color: '#fff', fontWeight: 600 }}>Légal</span>
@@ -25,7 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 28px 28px', color: 'var(--sauge)', fontSize: 13 }}>
-        © 2026 PumpIT Solutions
+        © 2026 {c?.raison_sociale || 'PumpIT Solutions'}
       </div>
     </footer>
   )

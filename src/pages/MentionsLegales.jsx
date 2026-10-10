@@ -1,6 +1,10 @@
 import LegalLayout from '../components/LegalLayout.jsx'
+import { useContenu } from '../lib/contenu.jsx'
+
+const Todo = () => <span className="todo">à compléter</span>
 
 export default function MentionsLegales() {
+  const c = useContenu()
   return (
     <LegalLayout title="Mentions légales" updated="[à compléter à la publication]">
       <p style={{ margin: 0 }}>
@@ -10,15 +14,15 @@ export default function MentionsLegales() {
       <section>
         <h2>Éditeur du site</h2>
         <p style={{ margin: 0 }}>
-          Raison sociale : <span className="todo">à compléter</span><br />
-          Forme juridique : <span className="todo">à compléter</span><br />
-          Capital social : <span className="todo">à compléter</span><br />
-          Siège social : <span className="todo">à compléter</span><br />
-          Numéro d'immatriculation (RCCM / SIRET) : <span className="todo">à compléter</span><br />
-          Numéro de TVA intracommunautaire (le cas échéant) : <span className="todo">à compléter</span><br />
-          Directeur de la publication : <span className="todo">à compléter</span><br />
-          Email : <span className="todo">à compléter</span><br />
-          Téléphone : <span className="todo">à compléter</span>
+          Raison sociale : {c?.raison_sociale || <Todo />}<br />
+          Forme juridique : {c?.forme_juridique || <Todo />}<br />
+          Capital social : {c?.capital_social || <Todo />}<br />
+          Siège social : {c?.siege_social || <Todo />}<br />
+          Numéro d'immatriculation (RCCM / SIRET) : {c?.rccm_siret || <Todo />}<br />
+          Numéro de TVA intracommunautaire (le cas échéant) : {c?.tva_intracom || <Todo />}<br />
+          Directeur de la publication : {c?.directeur_publication || <Todo />}<br />
+          Email : {c?.email_contact || <Todo />}<br />
+          Téléphone : {c?.telephone_contact || <Todo />}
         </p>
       </section>
 
@@ -34,7 +38,7 @@ export default function MentionsLegales() {
       <section>
         <h2>Propriété intellectuelle</h2>
         <p style={{ margin: 0 }}>
-          L'ensemble des éléments de ce site (textes, logos, charte graphique, éléments visuels) est la propriété de <span className="todo">[raison sociale]</span>, sauf mention contraire. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable, est interdite.
+          L'ensemble des éléments de ce site (textes, logos, charte graphique, éléments visuels) est la propriété de {c?.raison_sociale || <Todo />}, sauf mention contraire. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable, est interdite.
         </p>
       </section>
 
@@ -48,7 +52,7 @@ export default function MentionsLegales() {
       <section>
         <h2>Contact</h2>
         <p style={{ margin: 0 }}>
-          Pour toute question relative à ce site ou à ces mentions légales : <span className="todo">email à compléter</span>.
+          Pour toute question relative à ce site ou à ces mentions légales : {c?.email_contact || <Todo />}.
         </p>
       </section>
     </LegalLayout>

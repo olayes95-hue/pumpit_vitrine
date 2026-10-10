@@ -1,4 +1,8 @@
+import { useContenu, photoUrl } from '../../lib/contenu.jsx'
+
 export default function SaisieDuJour() {
+  const c = useContenu()
+  const pompeSrc = photoUrl(c?.photo_pompe, '/photos/pompe.jpg')
   return (
     <section style={{ background: 'var(--vert-pump)', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '100px 28px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 64, alignItems: 'center' }}>
@@ -20,11 +24,11 @@ export default function SaisieDuJour() {
           </div>
         </div>
         <div className="hide-desktop" style={{ height: 220, borderRadius: 28, overflow: 'hidden' }}>
-          <img src="/photos/pompe.jpg" alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={pompeSrc} alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div className="hide-mobile phone-wrap" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
           <div className="phone-photo" style={{ position: 'absolute', right: 0, top: 40, width: '62%', height: 440 }}>
-            <img src="/photos/pompe.jpg" alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 32 }} />
+            <img src={pompeSrc} alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 32 }} />
           </div>
           <div className="phone-frame" style={{ position: 'relative', width: 280, background: 'var(--nuit)', borderRadius: 44, padding: 12, boxShadow: '0 40px 70px -30px rgba(11,31,23,0.7)', alignSelf: 'flex-start' }}>
             <div style={{ background: 'var(--brume)', borderRadius: 34, padding: '22px 16px', display: 'flex', flexDirection: 'column', gap: 10, minHeight: 500 }}>
