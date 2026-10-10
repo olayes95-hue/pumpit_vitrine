@@ -26,8 +26,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 export default async function handler(req, res) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ error: 'Méthode non autorisée' }) }
 
-  const { name, station, tel, nb } = req.body || {}
-  if (!name || !station || !tel) return res.status(400).json({ error: 'Nom, station et téléphone sont requis.' })
+  const { name, email, station, tel, nb } = req.body || {}
+  if (!name || !email || !station || !tel) return res.status(400).json({ error: 'Nom, e-mail, station et téléphone sont requis.' })
 
   const apiKey = process.env.BREVO_API_KEY
   const recipient = process.env.DEMO_RECIPIENT_EMAIL
@@ -40,6 +40,7 @@ export default async function handler(req, res) {
     <p style="margin:0 0 16px"><strong>Nouvelle demande de démo</strong></p>
     <table style="border-collapse:collapse;width:100%">
       <tr><td style="padding:4px 12px 4px 0;color:#4A5E55">Nom</td><td style="padding:4px 0;font-weight:600">${esc(name)}</td></tr>
+      ${email ? `<tr><td style="padding:4px 12px 4px 0;color:#4A5E55">E-mail</td><td style="padding:4px 0;font-weight:600">${esc(email)}</td></tr>` : ''}
       <tr><td style="padding:4px 12px 4px 0;color:#4A5E55">Station</td><td style="padding:4px 0;font-weight:600">${esc(station)}</td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#4A5E55">Téléphone</td><td style="padding:4px 0;font-weight:600">${esc(tel)}</td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#4A5E55">Nombre de stations</td><td style="padding:4px 0;font-weight:600">${esc(nb || '1')}</td></tr>
@@ -52,7 +53,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         sender: { email: process.env.BREVO_SENDER_EMAIL || 'notifications@pumpit.app', name: process.env.BREVO_SENDER_NOM || 'PumpIT — Site vitrine' },
         to: [{ email: recipient }],
-        replyTo: { email: recipient },
+        replyTo: { email: email || recipient },
         subject: `Demande de démo — ${name} (${station})`,
         htmlContent: enveloppeEmail(corps),
       }),

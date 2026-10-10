@@ -55,6 +55,10 @@ export default function DemoForm() {
                 <input name="name" required value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
               </label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>
+                E-mail
+                <input name="email" type="email" required style={inputStyle} />
+              </label>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 14, fontWeight: 600 }}>
                 Nom de la station
                 <input name="station" required style={inputStyle} />
               </label>
