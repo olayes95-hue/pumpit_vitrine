@@ -19,8 +19,11 @@ export default function SaisieDuJour() {
             </div>
           </div>
         </div>
-        <div className="phone-wrap" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-          <div className="hide-mobile phone-photo" style={{ position: 'absolute', right: 0, top: 40, width: '62%', height: 440 }}>
+        <div className="hide-desktop" style={{ height: 220, borderRadius: 28, overflow: 'hidden' }}>
+          <img src="/photos/pompe.jpg" alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
+        <div className="hide-mobile phone-wrap" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+          <div className="phone-photo" style={{ position: 'absolute', right: 0, top: 40, width: '62%', height: 440 }}>
             <img src="/photos/pompe.jpg" alt="Ravitaillement en carburant dans une station PumpIT" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 32 }} />
           </div>
           <div className="phone-frame" style={{ position: 'relative', width: 280, background: 'var(--nuit)', borderRadius: 44, padding: 12, boxShadow: '0 40px 70px -30px rgba(11,31,23,0.7)', alignSelf: 'flex-start' }}>
@@ -58,11 +61,6 @@ export default function SaisieDuJour() {
       <style>{`
         .phone-wrap { min-height: 560px; }
         .phone-frame { margin-right: 30%; }
-        @media (max-width: 1100px) {
-          .phone-wrap { min-height: 0; }
-          .phone-frame { margin-right: 0; }
-          .phone-photo { display: none; }
-        }
       `}</style>
     </section>
   )

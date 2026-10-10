@@ -53,12 +53,12 @@ export default function ProduitDemo() {
         {ACTIVITES.map((t, i) => {
           const on = i === tab
           return (
-            <button key={t.name} className="tab-btn" onClick={() => setTab(i)} style={{
+            <button key={t.name} className="tab-btn activity-tab" onClick={() => setTab(i)} style={{
               display: 'flex', alignItems: 'center', gap: 10, padding: '10px 18px 10px 10px', borderRadius: 999,
               border: `2px solid ${on ? 'var(--nuit)' : 'var(--filet)'}`, background: on ? 'var(--nuit)' : '#fff', color: on ? '#fff' : 'var(--nuit)',
               fontSize: 16, fontWeight: 600, cursor: 'pointer', transition: 'all .2s',
             }}>
-              <span style={{ width: 34, height: 34, borderRadius: 999, background: on ? '#fff' : t.tint, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+              <span className="activity-tab-dot" style={{ width: 34, height: 34, borderRadius: 999, background: on ? '#fff' : t.tint, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
                 <span style={{ width: 12, height: 12, borderRadius: 999, background: t.color }} />
               </span>
               {t.name}
@@ -130,6 +130,13 @@ export default function ProduitDemo() {
         @media (max-width: 1100px) {
           .demo-grid { grid-template-columns: minmax(0,1fr); }
           .demo-main { padding: 18px; }
+        }
+        /* Boutons d'activité (Carburants, Lubrifiants…) : trop grands sur petit écran — 5
+           pills avec icône + libellé long ("Lubrifiants") se retrouvaient sur plusieurs lignes,
+           chacune disproportionnée par rapport à la largeur de l'écran. */
+        @media (max-width: 600px) {
+          .activity-tab { padding: 8px 14px 8px 8px !important; font-size: 14px !important; gap: 8px !important; }
+          .activity-tab-dot { width: 26px !important; height: 26px !important; }
         }
       `}</style>
     </section>
