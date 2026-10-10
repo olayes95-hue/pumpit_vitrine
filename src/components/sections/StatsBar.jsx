@@ -7,7 +7,7 @@ const STATS = [
 
 export default function StatsBar() {
   return (
-    <section style={{ background: 'var(--vert-pump)' }}>
+    <section className="hide-mobile" style={{ background: 'var(--vert-pump)' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '30px 28px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
         {STATS.map(([title, sub]) => (
           <div key={title} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
